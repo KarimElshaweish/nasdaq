@@ -8,7 +8,7 @@ export const useSelectTciker = () =>
   useSelector((state: GlobalState) => state.ticker);
 export const useLoadTicker = () => {
   const dispatch = useDispatch();
-  return async (url: string = computeUrl(Urls.tickers)) => {
+  return async (url: string = Urls.tickers) => {
     await axios
       .get(url)
       .then((res) => {
@@ -35,5 +35,26 @@ export const useLoadMore = () => {
       });
       await loadTicker(computeUrl(url));
     }
+  };
+};
+
+export const useSearch = () => {
+  const dispatch = useDispatch();
+  return async (query: string) => {
+    const searchUrl = Urls.search(query);
+    console.log(searchUrl);
+    await axios
+      .get(searchUrl)
+      .then((res) => {
+        dispatch({
+          type: Actions.GET_TICKER,
+          ticker: res.data,
+        });
+      })
+      .catch((e) => {
+        dispatch({
+          type: Actions.SET_ERROR,
+        });
+      });
   };
 };
