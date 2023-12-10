@@ -1,1 +1,1 @@
-export {default as store} from './configuerStore';
+export { default as store } from "./configuerStore";
