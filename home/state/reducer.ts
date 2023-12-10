@@ -1,32 +1,43 @@
-import { Ticker } from "./types"
+import { Ticker, TickerResult } from "./types"
 
 const initialState = {
     ticker:null,
-    loading:true
+    isloading:true,
+    count: 0,
+    results: [] as TickerResult[]
 }
 export enum Actions {
   GET_TICKER = 'GET/TICKER ',
+  SET_LOADING = 'SET/LOADING',
 }
 interface GetAction {
   type : Actions.GET_TICKER
-  loading:boolean,
-  count:number;
+  isloading:boolean
+  count:number
   ticker:Ticker
 }
-type TickerActions = GetAction
+interface SetLoadingAction {
+  type:Actions.SET_LOADING
+}
+
+type TickerActions = GetAction | SetLoadingAction
 export default (state = initialState, action:TickerActions) =>{
 
     switch(action.type){
-
         case Actions.GET_TICKER:
-          console.log(action.ticker.count);
+          console.log(action.ticker.next_url);
         return {
             ...state,
-            count:action.ticker.count,
-            results:action.ticker.results,
-            nextUrl:action.ticker.next_url,
-            loading:false,
-        }
+            count:state.count + action.ticker.count,
+            results:state.results.concat(action.ticker.results),
+            next_url:action.ticker.next_url,
+            isloading:false,
+        };
+        case Actions.SET_LOADING:
+          return {
+            ...state,
+            isloading:true,
+          };
         default: return state
     }
 
