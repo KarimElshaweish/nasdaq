@@ -1,1 +1,1 @@
-export {default as tickerReducer} from './reducer';
+export { default as tickerReducer } from "./reducer";

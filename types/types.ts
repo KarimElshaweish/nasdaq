@@ -1,15 +1,15 @@
-import { Ticker } from "../home/state/types";
+import { type Ticker } from "../home/state/types";
 
 export enum ResourcesNamesList {
-  HOME='home',
-  DETAILS = 'details'
+  HOME = "home",
+  DETAILS = "details",
 }
-export type RootStackParamList = {
+export interface RootStackParamList {
   [ResourcesNamesList.DETAILS]: undefined;
-};
-export enum Resource {
-  TICKERS = 'tickers',
 }
-export type GlobalState = {
-  ticker:Ticker
+export enum Resource {
+  TICKERS = "tickers",
+}
+export interface GlobalState {
+  ticker: Ticker;
 }

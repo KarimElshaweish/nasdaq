@@ -1,4 +1,4 @@
-import { API_KEY,BASE_URL } from "@env";
+import { API_KEY } from "@env";
 
 const computeUrl = (url: string) => `${url}&apiKey=${API_KEY}`;
 

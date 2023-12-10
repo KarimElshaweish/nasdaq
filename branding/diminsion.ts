@@ -1,4 +1,4 @@
 export default Object.freeze({
-    primarySpacing:10,
-    primaryBorderSize:15
-})
+  primarySpacing: 10,
+  primaryBorderSize: 15,
+});
