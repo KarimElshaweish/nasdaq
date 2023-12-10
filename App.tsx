@@ -7,7 +7,9 @@ import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import { HomeScreen } from './screens';
 import { Colors } from './branding';
+import { Provider } from 'react-redux'
 
+import { store } from './store';
 
 const DetailsScreen = ()=>{
   return (
@@ -22,6 +24,7 @@ const Stack = createNativeStackNavigator();
 
 const App= ()=> {
   return (
+    <Provider store={store}>
     <ApplicationProvider {...eva} theme={eva.dark}>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
@@ -32,6 +35,8 @@ const App= ()=> {
       </Stack.Navigator>
     </NavigationContainer>
      </ApplicationProvider>
+    </Provider>
+
    
   );
 }

@@ -2,15 +2,18 @@ import { Text } from "@ui-kitten/components";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { Colors, Dimisions } from "../branding";
-const CARD_SIZE = 150;
+const CARD_SIZE = 180;
 const IMAGE_SIZE = 50;
-const ShareViewItem = ()=>{
+interface Props {
+    companyName: string
+}
+const ShareViewItem = ({companyName}:Props)=>{
     return(
         <View>
       <View style={styles.conainer}>
         <Image height={IMAGE_SIZE} width={IMAGE_SIZE} source={{uri:"https://cdn.freebiesupply.com/logos/large/2x/tesla-motors-logo-png-transparent.png"}}/>
-    <Text style={styles.text} numberOfLines={1}>
-        Company Name
+    <Text style={styles.text} numberOfLines={2}>
+        {companyName}
     </Text>
   </View>
         </View>
@@ -29,7 +32,9 @@ const styles = StyleSheet.create({
         marginTop:Dimisions.primaryBorderSize,
     },
     text:{
-        marginTop:Dimisions.primarySpacing
+        marginTop:Dimisions.primarySpacing,
+        textAlign:'center',
+        padding:Dimisions.primarySpacing
     }
 });
 
