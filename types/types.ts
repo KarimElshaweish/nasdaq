@@ -7,7 +7,9 @@ export enum ResourcesNamesList {
 export type RootStackParamList = {
   [ResourcesNamesList.DETAILS]: undefined;
 };
-
+export enum Resource {
+  TICKERS = 'tickers',
+}
 export type GlobalState = {
   ticker:Ticker
 }

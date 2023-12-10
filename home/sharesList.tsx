@@ -1,31 +1,29 @@
 import React, { useEffect } from "react";
-import { FlatList, ListRenderItem, StyleSheet } from "react-native";
+import { FlatList, ListRenderItem, StyleSheet,ActivityIndicator } from "react-native";
 import ShareViewItem from "./shareViewItem";
-import { Colors } from "../branding";
-import { useSelector } from "react-redux";
-import { GlobalState } from "../types";
-import { useLoadTicker } from "./useLoadTicker";
-import { TickerResults } from "./state/types";
+import { useLoadMore, useLoadTicker, useSelectTciker } from "./hooks";
+import { TickerResult } from "./state/types";
 
-const renderItem:ListRenderItem<TickerResults> = ({item}) => <ShareViewItem companyName={item.name}/>
-
+const renderItem:ListRenderItem<TickerResult> = ({item}) => <ShareViewItem companyName={item.name}/>
 const SharesList = ()=>{
     const loadTicker = useLoadTicker();
-    const ticker = useSelector((state:GlobalState) => state.ticker);
+    const loadMore = useLoadMore();
+    const {count, next_url,results, isloading } = useSelectTciker();
+    console.log(results);
+    const endReached = () => loadMore(next_url);
     useEffect(()=>{
         loadTicker();
     },[])
-    console.log(`VIEW ticker ${JSON.stringify(ticker)}`);
-    if(!ticker?.count){
-        return null;
-    }
-
-    return <FlatList
+    return <>
+    <FlatList
       numColumns={2}  
-      data={ticker.results}  
+      data={results}  
       renderItem={renderItem}
       contentContainerStyle={styles.ContentContainer}
+      onEndReached={endReached}
       />
+      {isloading? <ActivityIndicator />: null}
+    </>
 }
 const styles = StyleSheet.create({
     ContentContainer:{

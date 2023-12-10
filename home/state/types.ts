@@ -1,4 +1,4 @@
-export interface TickerResults {
+export interface TickerResult {
     active: boolean
     cik: string
     composite_figi: string
@@ -17,6 +17,7 @@ export interface Ticker {
     count: number
     next_url: string
     request_id: string
-    results: TickerResults[]
+    results: TickerResult[]
     status: string
+    isloading:boolean
   }
