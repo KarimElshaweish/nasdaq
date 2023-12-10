@@ -34,7 +34,7 @@ export default (state = initialState, action: TickerActions) => {
       return {
         ...state,
         count: state.count + action.ticker.count,
-        results: state.results.concat(action.ticker.results),
+        results: state.results.concat(action.ticker.results ?? []),
         nextUrl: action.ticker.next_url,
         isloading: false,
         error: false,

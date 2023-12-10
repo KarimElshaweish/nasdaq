@@ -9,6 +9,7 @@ export interface RootStackParamList {
 }
 export enum Resource {
   TICKERS = "tickers",
+  SEARCH = "search",
 }
 export interface GlobalState {
   ticker: Ticker;
