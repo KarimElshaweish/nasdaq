@@ -42,12 +42,11 @@ export const useSearch = () => {
   const dispatch = useDispatch();
   return async (query: string) => {
     const searchUrl = Urls.search(query);
-    console.log(searchUrl);
     await axios
       .get(searchUrl)
       .then((res) => {
         dispatch({
-          type: Actions.GET_TICKER,
+          type: Actions.SEARCH,
           ticker: res.data,
         });
       })

@@ -8,6 +8,7 @@ import {
 import ShareViewItem from "./shareViewItem";
 import { useLoadMore, useLoadTicker, useSelectTciker } from "./hooks";
 import { type TickerResult } from "./state/types";
+import { Text } from "@ui-kitten/components";
 
 const renderItem: ListRenderItem<TickerResult> = ({ item }) => (
   <ShareViewItem companyName={item.name} />
@@ -15,7 +16,8 @@ const renderItem: ListRenderItem<TickerResult> = ({ item }) => (
 const SharesList = () => {
   const loadTicker = useLoadTicker();
   const loadMore = useLoadMore();
-  const { nextUrl, results, isloading } = useSelectTciker();
+  const { nextUrl, results, isloading, errorMessage, count } =
+    useSelectTciker();
   console.log(results);
   const endReached = () => {
     loadMore(nextUrl);
@@ -23,6 +25,12 @@ const SharesList = () => {
   useEffect(() => {
     loadTicker();
   }, []);
+  if (errorMessage) {
+    <Text>{errorMessage}</Text>;
+  }
+  if (!count) {
+    <Text>No Results</Text>;
+  }
   return (
     <>
       <FlatList
@@ -31,6 +39,7 @@ const SharesList = () => {
         renderItem={renderItem}
         contentContainerStyle={styles.ContentContainer}
         onEndReached={endReached}
+        testID="tickerList"
       />
       {isloading ? <ActivityIndicator /> : null}
     </>

@@ -12,11 +12,8 @@ const ShareViewItem = ({ companyName }: Props) => {
     <View>
       <View style={styles.conainer}>
         <Image
-          height={IMAGE_SIZE}
-          width={IMAGE_SIZE}
-          source={{
-            uri: "https://cdn.freebiesupply.com/logos/large/2x/tesla-motors-logo-png-transparent.png",
-          }}
+          style={styles.image}
+          source={require("../assets/images/defaulListIcon.png")}
         />
         <Text style={styles.text} numberOfLines={2}>
           {companyName}
@@ -41,6 +38,10 @@ const styles = StyleSheet.create({
     marginTop: Dimisions.primarySpacing,
     textAlign: "center",
     padding: Dimisions.primarySpacing,
+  },
+  image: {
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
   },
 });
 
