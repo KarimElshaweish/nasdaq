@@ -1,5 +1,8 @@
 # nasdaq
 Screenshots from the app
+
+
+
 <img width="390" alt="Screenshot 2023-12-12 at 1 01 16 AM" src="https://github.com/KarimElshaweish/nasdaq/assets/32702837/ae719df1-af56-4d9c-9fe4-7ce96aa65f2e">
 
 
