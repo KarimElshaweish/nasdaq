@@ -9,6 +9,7 @@ import ShareViewItem from "./shareViewItem";
 import { useLoadMore, useLoadTicker, useSelectTciker } from "./hooks";
 import { type TickerResult } from "./state/types";
 import { Text } from "@ui-kitten/components";
+import { Colors } from "../branding";
 
 const renderItem: ListRenderItem<TickerResult> = ({ item }) => (
   <ShareViewItem companyName={item.name} />
@@ -48,6 +49,8 @@ const SharesList = () => {
 const styles = StyleSheet.create({
   ContentContainer: {
     alignItems: "center",
+    backgroundColor: Colors.priamary,
+    height: "100%",
   },
 });
 export default SharesList;

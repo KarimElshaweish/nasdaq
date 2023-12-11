@@ -11,6 +11,7 @@ import { Colors } from "./branding";
 import { Provider } from "react-redux";
 
 import { store } from "./store";
+import { StatusBar } from "expo-status-bar";
 
 const DetailsScreen = () => {
   return (
@@ -53,7 +54,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.priamary,
+    backgroundColor: Colors.dark,
   },
 });
 
