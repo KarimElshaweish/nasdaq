@@ -3,13 +3,19 @@ import { Input } from "@ui-kitten/components";
 import { StyleSheet } from "react-native";
 import { Colors, Dimisions } from "../branding";
 import diminsion from "../branding/diminsion";
-import { useSearch } from "../home/hooks";
+import { useLoadTicker, useSearch, useSelectTciker } from "./hooks";
+import { Actions } from "./state/reducer";
 
 const SearchBar = () => {
   const search = useSearch();
+  const loadAllTickers = useLoadTicker();
+  const { action } = useSelectTciker();
   const onChangeText = (text: string) => {
     if (text.length > 2) {
       search(text);
+    }
+    if (action !== Actions.GET_TICKER && text.length === 0) {
+      loadAllTickers();
     }
   };
   return (

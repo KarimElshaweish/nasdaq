@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SharesList } from "../home";
-import { SearchBar } from "../generic";
+import SearchBar from "../home/searchbar";
 const HomeScreen = () => {
   return (
     <SafeAreaView>

@@ -1,3 +1,5 @@
+import { type Actions } from "./reducer";
+
 export interface TickerResult {
   active: boolean;
   cik: string;
@@ -21,4 +23,6 @@ export interface Ticker {
   status: string;
   isloading: boolean;
   nextUrl: string;
+  errorMessage?: string;
+  action: Actions;
 }
